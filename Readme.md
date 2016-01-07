@@ -38,7 +38,7 @@
 ## Still unknown
 * `[abc]`	A single character of: a, b, or c
 * `[^abc]`	Any single character except: a, b, or c
-* `[a-z]`	Any single character in the range a-z
+* `[a-z]`	all instances of lowercase letters; Brackets are required ``` "abc".scan(/[a-z]/) #=> ["a", "b", "c"] ```
 * `[a-zA-Z]`	Any single character in the range a-z or A-Z
 * `^`	Start of line
 * `$`	End of line
@@ -51,28 +51,30 @@
 * `\D`	Any non-digit ```str.scan(/\D/)``` found only the nondigits a-z in the string
 * `\w`	Any word character (letter, number, underscore)
 * `\W`	Any non-word character: Finds spaces, commas, colons, etc - things that wouldn't be part of a word. This does find apostraphe's also, so look out for contractions!
-
-  ```ruby
-  "Joshua Mejia [7:58 PM]".scan(/\W/) => [" ", " ", "[", ":", " ", "]"]
-  ```
-
-  ```ruby
-  "Joshua Mejia [7:58 PM]".scan(/.\W/) => ["a ", "a ", "7:", "8 ", "M]"]
-  ```
+*     EXAMPLE: ```ruby
+*           "Joshua Mejia [7:58 PM]".scan(/\W/) => [" ", " ", "[", ":", " ", "]"]
+*           ```
+*           ```ruby
+*              "Joshua Mejia [7:58 PM]".scan(/.\W/) => ["a ", "a ", "7:", "8 ", "M]"]
+*              ```
+*
 * `\b`	Any word boundary
-* `(...)`	Capture everything enclosed
+* `(...)`	Capture an item in the string and then use `.` to represent any place your want around the string
+*                       str = "Joshua"   # => "Joshua"
+                        str[/(....a)/]   # => "oshua"
+                        str[/(J...u.)/]  # => "Joshua"
+                        str[/(.s..)/]    # => "oshu"
 * `(a|b)`	a or b
 * `a?`	Zero or one of a
 * `a*`	Zero or more of a
 * `a+`	One or more of a
 * `a{3}`	Exactly 3 of a
 * `a{3,}`	3 or more of a
-* `a{3,6}`	Between 3 and 6 of a  ``"hellllo worllllld!".scan(l{3,6}) => ["llll", "lllll"]``  
-                  If there are more than the max, the regex grabs the maximum, leaving behind the remainder of the characters as such:                   `"777777777".scan(7{3-6}) => ["777777", "777"]`
+* `a{3,6}`	Between 3 and 6 of a
 
 ## Open questions:
 
-* does case matter?
+* does case matter? YES! Use `i` after the method as such: `"hi HI".scan(/hi/i) => ["hi", "HI"]`
 * can we get rid of the plus in scan?
 
 
