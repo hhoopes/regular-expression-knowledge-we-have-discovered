@@ -6,7 +6,7 @@
 * `[]` return the first match
 * `gsub` Takes a regex expression, and a second argument. Replaces all instances of the target (first argument) with the second argument.
 * `split`
-  Splits string based on the character argumert provided (`a.split(/<character(s)>/`).
+  Splits string based on the character argumert provided(defaults to a space)
   Removes the arg character(s) from the string, returns an array of strings
 
   ```ruby
@@ -66,7 +66,8 @@
 * `a+`	One or more of a
 * `a{3}`	Exactly 3 of a
 * `a{3,}`	3 or more of a
-* `a{3,6}`	Between 3 and 6 of a
+* `a{3,6}`	Between 3 and 6 of a ``"hellllo worllllld!".scan(l{3,6}) => ["llll", "lllll"]``  
+          However, if there are more than the max, the regex grabs the maximum, leaving behind the remainder of the characters as such:           `"777777777".scan(7{3-6}) => ["777777", "777"]`
 
 ## Open questions:
 
