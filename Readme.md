@@ -107,7 +107,7 @@
 * `$`	End of line
 * `\A`	Start of string
 * `\S`	Any non-whitespace character: Allows you to match patterns of anything that's not a space.
-```"http://pizza.com/     http://calzones.com".scan(/http\S+/) => ["http:", "http:"]```
+```"http://pizza.com/     http://calzones.com    ".scan(/http\S+/) => ["http://pizza.com/", "http://calzones.com"]```
 * `\d`	Any digit ```str.scan(/\d/)``` found only the digits 0-9 in the string
 * `\D`	Any non-digit ```str.scan(/\D/)``` found only the nondigits a-z in the string
 * `(a|b)`	a or b
